@@ -1,0 +1,20 @@
+version: '2'
+services:
+  web:
+    image: jupyter/pyspark-notebook
+    ports:
+      - "9999:9999"
+    links:
+      - cloudera
+    volumes:
+      - .:/home/jovyan/work
+    command: jupyter notebook --ip='*' --port=9999 --no-browser
+  cloudera:
+    image: cloudera/quickstart
+    command: /usr/bin/docker-quickstart
+    ports:
+      - "8888:8888"
+      - "50070:50070"
+    hostname: quickstart.cloudera
+    privileged: true
+    tty: true
