@@ -15,7 +15,7 @@ services:
     image: cloudera/quickstart
     command: /usr/bin/docker-quickstart
     ports:
-      - "8888:8888"
+      - "1337:8888"
     hostname: quickstart.cloudera
     privileged: true
     tty: true
