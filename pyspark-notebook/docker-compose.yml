@@ -5,17 +5,17 @@ services:
       context: .
       dockerfile: Dockerfile.test
     ports:
-      - "9999:9999"
-    links:
-      - cloudera
+    - "9999:9999"
+    depends_on:
+    - cloudera
     volumes:
-      - .:/home/jovyan/work
+    - .:/home/jovyan/work
     command: /bin/bash docker-entrypoint.sh
   cloudera:
     image: cloudera/quickstart
     command: /usr/bin/docker-quickstart
     ports:
-      - "8888:8888"
+    - "8888:8888"
     hostname: quickstart.cloudera
     privileged: true
     tty: true
