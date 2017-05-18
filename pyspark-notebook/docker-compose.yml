@@ -3,7 +3,8 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile.test
+      args:
+      - APACHE_SPARK_VERSION=1.6.1
     ports:
     - "9999:9999"
     depends_on:
